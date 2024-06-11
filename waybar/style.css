@@ -1,0 +1,135 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  font-size: 12px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(21, 18, 27, 0);
+  color: #ffffff;
+}
+/* 
+tooltip {
+  background: #1f2430;
+  border-radius: 6px;
+} */
+
+#workspaces button {
+  padding: 0px 6px;
+  color: #313244;
+}
+
+#workspaces button.active {
+  color: #ffffff;
+}
+
+#workspaces button.focused {
+  color: #a6adc8;
+  background: #eba0ac;
+  border-radius: 6px;
+}
+
+#workspaces button.urgent {
+  color: #1f2430;
+  background: #a6e3a1;
+  border-radius: 6px;
+}
+
+#workspaces button:hover {
+  border-radius: 6px;
+  color: #1f2430;
+  padding: 0px 6px;
+}
+
+#custom-powermenu,
+#window,
+#clock,
+#pulseaudio,
+#network,
+#workspaces,
+#cpu,
+#memory {
+  background: #1f2430;
+  opacity: 0.8;
+  padding: 0px 10px;
+  margin-top: 4px;
+}
+
+#workspaces {
+  background: #1f2430;
+  border-radius: 6px;
+  margin-left: 4px;
+}
+
+#memory,
+#cpu {
+  padding-top: 1px;
+}
+
+#custom-powermenu {
+  color: #ffffff;
+  border-radius: 0px 6px 6px 0px;
+  margin-right: 4px;
+  padding-right: 15px;
+}
+
+/* #window {
+  border-radius: 10px;
+  margin-left: 60px;
+  margin-right: 60px;
+} */
+
+#clock {
+  color: #ffffff;
+  padding: 0px 10px;
+  padding-top: 2px;
+}
+
+#network {
+  color: #ffffff;
+  border-radius: 6px 0px 0px 6px;
+  padding-left: 15px;
+}
+
+#pulseaudio {
+  color: #ffffff;
+  padding: 0px 10px;
+  padding-top: 2px;
+}
+
+@keyframes blink-critical {
+  70% {
+    color: white;
+  }
+
+  to {
+    color: white;
+    background-color: red;
+  }
+}
+
+#cpu.warning {
+  color: orange;
+}
+
+#cpu.critical {
+  color: red;
+}
+
+#memory {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#memory.warning {
+  color: orange;
+}
+
+#memory.critical {
+  color: red;
+  animation-name: blink-critical;
+  animation-duration: 2s;
+}

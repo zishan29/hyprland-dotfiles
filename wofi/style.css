@@ -1,0 +1,192 @@
+/**
+ * WOFI STYLES
+ *
+ * Launch with GtkInspector:
+ *   
+ *   `GTK_DEBUG=interactive wofi`
+ *
+ * Layout reference:
+ * 
+ *   window - #window
+ *     box - #outer-box
+ *       entry - #input
+ *       scrolledwindow - #scroll
+ *         viewport
+ *           box
+ *             flowbox - #inner-box
+ *               flowboxchild - #entry
+ *                 .entry - #unselected or #selected
+ *                    This only exists if there's ONLY 1 action. This is a WofiPropertyBox which has no CSS node and should probably not be used, the name is dependent on whether or not the entry is selected. See wofi(5) on #selected and #unselected for info.
+ *                     image
+ *                       This is only present if an image is present in the entry and might occur multiple times if multiple images are present.
+ *                     label
+ *                       This is only present if text is present in the entry and might occur multiple times if there are multiple text objects in a single entry.
+ *                   expander
+ *                     This and its children only exist if there are multiple actions on the entry
+ *                     .entry - #unselected or #selected
+ *                       The main action. This is a WofiPropertyBox which has no CSS node and should probably not be used, the name is dependent on whether or not the entry is selected. See wofi(5) on #selected and #unselected for info.
+ *                       image
+ *                         This is only present if an image is present in the entry and might occur multiple times if multiple images are present.
+ *                       label
+ *                         This is only present if text is present in the entry and might occur multiple times if there are multiple text objects in a single entry.
+ *                     list
+ *                       This contains all the secondary actions
+ *                       row - #entry
+ *
+ *                       .entry - #unselected or #selected
+ *                         This is a WofiPropertyBox which has no CSS node and should probably not be used, the name is dependent on whether or not the entry is selected. See wofi(5) on #selected and #unselected for info.
+ *                           image
+ *                             This is only present if an image is present in the entry and might occur multiple times if multiple images are present.
+ *
+ *                           label
+ *                             This is only present if text is present in the entry and might occur multiple times if there are multiple text objects in a single entry.
+ *
+ *         scrollbar
+ */
+
+/* Dashed lines around scroll container */
+
+undershoot,
+overshoot {
+  background-image: none;
+}
+
+/* Fade in on launch */
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Main window */
+
+window {
+  margin: 0;
+  padding: 0;
+  font-family: "Public Sans", sans-serif;
+  font-size: 12px;
+  background: #1f2430;
+  opacity: 1;
+  animation-name: fade;
+  animation-duration: 0.5s;
+  border-radius: 10px;
+}
+
+/* List and input container */
+
+#outer-box {
+  margin: 12px;
+}
+
+/* List container */
+
+#inner-box {
+  margin: 0;
+}
+
+/* Search field */
+
+#input {
+  background: none;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  padding: 6px 16px;
+  margin: 10px 0;
+  border: 1px solid white;
+  color: white;
+  border-radius: 10px;
+  caret-color: white;
+}
+
+#input image.left {
+  padding-right: 8px;
+  min-width: 100px;
+  margin-left: -100px;
+}
+
+#input image.right {
+  min-width: 100px;
+  margin-right: -100px;
+}
+
+/* List entries */
+
+#text,
+#text:selected,
+list {
+  color: #bfbab0;
+  font-weight: normal;
+  padding: 0;
+  background: none;
+}
+
+#entry {
+  background: none;
+  padding: 0;
+}
+
+.entry {
+  padding: 22px 0;
+}
+
+#entry,
+#entry title {
+  outline: none;
+}
+
+arrow {
+  color: rgba(198, 170, 232, 0.15);
+  padding-left: 16px;
+  margin-right: -16px;
+  min-width: 22px;
+}
+
+#entry:selected expander arrow {
+  color: #ffffff;
+}
+
+#entry:selected:focus expander arrow {
+  color: #ffffff;
+}
+
+list .entry {
+  outline: none;
+  padding: 12px 22px;
+}
+
+#img {
+  background: none;
+  padding: 0 1em 0 22px;
+}
+
+#entry #entry #img {
+  -gtk-icon-transform: scale(0.75);
+}
+
+/* Items with no icon (such as run mode items) */
+
+#text:only-child {
+  padding: 0 22px;
+}
+
+/* Focused entry text */
+
+#entry:selected:focus > box > #text,
+#entry:selected:focus > expander > title #text,
+expander:focus title #text {
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Focused entry container */
+
+#entry:selected:focus > box,
+#entry:selected:focus > expander,
+expander:focus {
+  /* background: rgba(30, 30, 41, 0.75); */
+}
