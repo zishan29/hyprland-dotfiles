@@ -1,0 +1,9 @@
+[Unit]
+Description=My Script
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c '/usr/bin/xremap --device /dev/input/event4 /home/arch/.config/xremap/config.yml'
+
+[Install]
+WantedBy=multi-user.target

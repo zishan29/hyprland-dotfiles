@@ -1,0 +1,9 @@
+virtual_modifiers:
+  - CapsLock
+keymap:
+  - remap:
+      CapsLock-j: Left
+      CapsLock-k: Down
+      CapsLock-i: Up
+      CapsLock-l: Right
+      CapsLock-Esc: CapsLock
